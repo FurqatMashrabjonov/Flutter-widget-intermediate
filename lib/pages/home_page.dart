@@ -23,47 +23,36 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Home Page"),
-        centerTitle: true,
-      ),
-      body: PageView(
-        // controller: _pageController,
-        onPageChanged: (int index) {
-          setState(() {
-            _selectedPage = index;
-          });
-        },
-        children: [
-          Container(
-            color: Colors.pink,
-            child: const Center(
-              child: Text("Page One"),
+    return DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          appBar: AppBar(
+            title: const Text('Home Page'),
+            centerTitle: true,
+            bottom: TabBar(
+              tabs: [
+                Tab(icon: Icon(Icons.home),),
+                Tab(icon: Icon(Icons.school), ),
+              ],
             ),
           ),
-          Container(
-            color: Colors.blue,
-            child: const Center(
-              child: Text("Page Two"),
-            ),
-          )
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Page 1'),
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Page 2'),
-        ],
-        currentIndex: _selectedPage,
-        selectedItemColor: Colors.amber[800],
-        onTap: (int index) {
-          setState(() {
-            _selectedPage = index;
-            _pageController.animateToPage(index, duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
-          });
-        },
-      ),
+          body: TabBarView(
+            children: [
+              Container(
+                color: Colors.blue,
+                child: const Center(
+                  child: Text('Home'),
+                ),
+              ),
+              Container(
+                color: Colors.red,
+                child: const Center(
+                  child: Text('School'),
+                ),
+              )
+            ],
+          ),
+        )
     );
   }
 }
