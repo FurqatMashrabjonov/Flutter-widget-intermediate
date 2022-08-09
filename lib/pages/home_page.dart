@@ -10,175 +10,59 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late PageController _pageController;
+
+  int _selectedPage = 0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _pageController = PageController();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Plus Messages'),
-        actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.lock_open_rounded)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.search)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.folder_copy_outlined))
-        ],
+        title: Text("Home Page"),
+        centerTitle: true,
       ),
-      drawer:  Drawer(
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.teal,
-              ),
-              child: Text('Drawer Header'),
-            ),
-            ListTile(
-              title: const Text('Item 1'),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-              },
-            ),
-            ListTile(
-              title: const Text('Item 2'),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-              },
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {},
-      ),
-      body: Column(
+      body: PageView(
+        // controller: _pageController,
+        onPageChanged: (int index) {
+          setState(() {
+            _selectedPage = index;
+          });
+        },
         children: [
           Container(
-            height: 40,
-            color: Colors.teal,
-            child: Row(
-              children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.account_box),
-                  color: Colors.white,
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.bolt),
-                  color: Colors.white,
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.account_balance_sharp),
-                  color: Colors.white,
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.rocket),
-                  color: Colors.white,
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.cabin),
-                  color: Colors.white,
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.baby_changing_station),
-                  color: Colors.white,
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.g_mobiledata_outlined),
-                  color: Colors.white,
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.alternate_email),
-                  color: Colors.white,
-                ),
-              ],
+            color: Colors.pink,
+            child: const Center(
+              child: Text("Page One"),
             ),
           ),
-         Expanded(
-             child: ListView(
-               children: [
-                 _Messages(username: 'John Doe', message: 'Hello Worlddddddddddddddddddddd', avatar: 'https://picsum.photos/200'),
-                 _Messages(username: 'John Doe', message: 'Hello Worlddddddddddddddddddddd', avatar: 'https://picsum.photos/200'),
-                 _Messages(username: 'John Doe', message: 'Hello Worlddddddddddddddddddddd', avatar: 'https://picsum.photos/200'),
-                 _Messages(username: 'John Doe', message: 'Hello Worlddddddddddddddddddddd', avatar: 'https://picsum.photos/200'),
-                 _Messages(username: 'John Doe', message: 'Hello Worlddddddddddddddddddddd', avatar: 'https://picsum.photos/200'),
-                 _Messages(username: 'John Doe', message: 'Hello Worlddddddddddddddddddddd', avatar: 'https://picsum.photos/200'),
-                 _Messages(username: 'John Doe', message: 'Hello Worlddddddddddddddddddddd', avatar: 'https://picsum.photos/200'),
-                 _Messages(username: 'John Doe', message: 'Hello Worlddddddddddddddddddddd', avatar: 'https://picsum.photos/200'),
-                 _Messages(username: 'John Doe', message: 'Hello Worlddddddddddddddddddddd', avatar: 'https://picsum.photos/200'),
-                 _Messages(username: 'John Doe', message: 'Hello Worlddddddddddddddddddddd', avatar: 'https://picsum.photos/200'),
-                 _Messages(username: 'John Doe', message: 'Hello Worlddddddddddddddddddddd', avatar: 'https://picsum.photos/200'),
-                 _Messages(username: 'John Doe', message: 'Hello Worlddddddddddddddddddddd', avatar: 'https://picsum.photos/200'),
-                 _Messages(username: 'John Doe', message: 'Hello Worlddddddddddddddddddddd', avatar: 'https://picsum.photos/200'),
-                 _Messages(username: 'John Doe', message: 'Hello Worlddddddddddddddddddddd', avatar: 'https://picsum.photos/200'),
-                 _Messages(username: 'John Doe', message: 'Hello Worlddddddddddddddddddddd', avatar: 'https://picsum.photos/200'),
-                 _Messages(username: 'John Doe', message: 'Hello Worlddddddddddddddddddddd', avatar: 'https://picsum.photos/200'),
-                 _Messages(username: 'John Doe', message: 'Hello Worlddddddddddddddddddddd', avatar: 'https://picsum.photos/200'),
-                 _Messages(username: 'John Doe', message: 'Hello Worlddddddddddddddddddddd', avatar: 'https://picsum.photos/200'),
-                 _Messages(username: 'John Doe', message: 'Hello Worlddddddddddddddddddddd', avatar: 'https://picsum.photos/200'),
-                 _Messages(username: 'John Doe', message: 'Hello Worlddddddddddddddddddddd', avatar: 'https://picsum.photos/200'),
-                 _Messages(username: 'John Doe', message: 'Hello Worlddddddddddddddddddddd', avatar: 'https://picsum.photos/200'),
-                 _Messages(username: 'John Doe', message: 'Hello Worlddddddddddddddddddddd', avatar: 'https://picsum.photos/200'),
-                 _Messages(username: 'John Doe', message: 'Hello Worlddddddddddddddddddddd', avatar: 'https://picsum.photos/200'),
-               ],
-             )
-         )
-        ],
-      ),
-    );
-  }
-
-  Widget _Messages({username, message, avatar}){
-    return  Container(
-        height: 60,
-        padding: EdgeInsets.all(10.0),
-        decoration: const BoxDecoration(
-          border: Border(
-            bottom: BorderSide(
-              color: Colors.grey,
-              width: 1.0,
+          Container(
+            color: Colors.blue,
+            child: const Center(
+              child: Text("Page Two"),
             ),
-          ),
-        ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          CircleAvatar(
-            backgroundImage: NetworkImage(avatar),
-          ),
-          SizedBox(width: 15.0),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(username, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),) ,
-              Text(message + '...', style: TextStyle(color: Color(0xFF070000).withOpacity(0.5)),)
-            ],
-          ),
-          SizedBox(width: 10.0),
-          Column(
-            children: [
-              Container(
-                padding: EdgeInsets.all(2.0),
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.teal,
-                      ),
-                      borderRadius: BorderRadius.circular(20)
-                  ),
-                  child:  Text('99+')
-              )
-            ],
           )
         ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Page 1'),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Page 2'),
+        ],
+        currentIndex: _selectedPage,
+        selectedItemColor: Colors.amber[800],
+        onTap: (int index) {
+          setState(() {
+            _selectedPage = index;
+            _pageController.animateToPage(index, duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
+          });
+        },
       ),
     );
   }
